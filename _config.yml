@@ -9,4 +9,5 @@ twitter_username: jekyllrb
 github_username:  k3ut0i
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
+extensions: [fenced_code_blocks]
