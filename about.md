@@ -20,8 +20,10 @@ Disclaimer
     blog. I will try to give credit where it is due. In case you don't feel the same about any post
     please let me know.
 
-Site
-====
+site-info
+=========
+<a href="http://www.freecounterstat.com" title="page counter"><img src="http://counter8.freecounterstat.ovh/private/freecounterstat.php?c=ea53064549c7b5240a0e190b33c8823c" border="0" title="page counter" alt="page counter"></a>
+
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
 
 You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
