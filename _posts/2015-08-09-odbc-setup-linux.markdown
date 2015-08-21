@@ -2,7 +2,8 @@
 layout: post
 title: ODBC Setup in Linux
 date: 2015-08-09
-categories: linux
+tags: odbc linux database
+categories: work
 ---
 
 ODBC setup and simple examples in linux

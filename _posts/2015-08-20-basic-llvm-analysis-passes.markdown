@@ -2,7 +2,8 @@
 layout: post
 title: Basic LLVM Analysis Passes
 date: 2015-08-20
-categories: c++ llvm
+tags: c++ llvm compilers
+categories: work
 ---
 
 ~~Basic Analysis Passes in LLVM INCOMPLETE~~
