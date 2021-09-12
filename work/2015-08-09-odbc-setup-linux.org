@@ -1,21 +1,16 @@
----
-layout: post
-title: ODBC Setup in Linux
-date: 2015-08-09
-categories: work
----
+#+AUTHOR: Keutoi
+#+DATE: <2015-08-09>
+#+TITLE: ODBC setup and simple examples in linux
 
-* ODBC setup and simple examples in linux               :odbc:linux:database:
+* Installation ArchLinux packages
 
-** Installation ArchLinux packages
-
-*** Installing odbc
+** Installing odbc
 
 #+begin_src sh
   sudo pacman -S unixodbc
 #+end_src
 
-*** Installing drivers
+** Installing drivers
 
    #+begin_src sh
      sudo pacman -S myodbc   # mysql
@@ -24,7 +19,7 @@ categories: work
    #+end_src
 
 
-** Local ODBC setup
+* Local ODBC setup
 Configurations for odbc drivers are written in _/etc/odbcinst.ini_ file:
 #+begin_src conf
   [PostgreSQL]
@@ -66,10 +61,10 @@ Configuration for odbc sources are in _/etc/odbc.ini_ file:
   Trace 		= No
 #+end_src
 
-** Testing the installation
+* Testing the installation
 ~isql~ is a CLI for ~unixodbc~.
 
-*** Postgres
+** Postgres
 ~isql -v psql-connector~ connects using psql-connector source specification in ~/etc/odbc.ini~ or in local ~~/.odbc.ini~ (I'm not
 sure of overrides) and opens a sql like prompt to execute sql commands.
 
@@ -99,7 +94,7 @@ gives output:
 
 #+end_example
 
-*** MySQL
+** MySQL
 
 myodbc driver was not working in my system. [[http://www.howtobuildsoftware.com/index.php/how-do/bkD6/mysql-odbc-asterisk-mariadb-isql-mariadb-odbc-throws-invalid-pointer-error][some segmentation errors in driver lib]]. 
 I had to downgrade myodbc pkg from 5.3.4-1 to 5.2.6-1 to get it working
@@ -109,10 +104,11 @@ I had to downgrade myodbc pkg from 5.3.4-1 to 5.2.6-1 to get it working
 #+end_src
 
 
-*** TODO freetds, sqlite testing
+** TODO freetds, sqlite testing
 
-    
-*** Sample C, C++ Interfaces
+
+* Sample Programs   
+** Sample C Interfaces
 
     #+begin_src c
       #include <stdio.h>
@@ -166,9 +162,7 @@ I had to downgrade myodbc pkg from 5.3.4-1 to 5.2.6-1 to get it working
       }
     #+end_src
 
-```
-
-Simple Query Example
+** Simple Query Example in C++
 
 #+begin_src cpp
   #include<stdio.h>
@@ -277,9 +271,5 @@ Simple Query Example
 #+end_src
 
 
-*** Reference Links
-[siva]: https://compscinotes.wordpress.com/2010/04/18/unixodbc-mysql-sample-program/
-[easysoft]: http://www.easysoft.com/developer/languages/c/odbc_tutorial.html
-[raosoft]: http://www.raosoft.com/ezsurvey/help/2007/odbc_in_unix.html
-
-
+* Reference Links
+[[https://compscinotes.wordpress.com/2010/04/18/unixodbc-mysql-sample-program/][siva]]  [[http://www.easysoft.com/developer/languages/c/odbc_tutorial.html][easysoft]]  [[http://www.raosoft.com/ezsurvey/help/2007/odbc_in_unix.html][raosoft]]

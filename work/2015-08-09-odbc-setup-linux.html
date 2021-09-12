@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-10 Fri 12:53 -->
+<!-- 2021-09-12 Sun 10:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>ODBC setup and simple examples in linux</title>
 <meta name="generator" content="Org mode" />
+<meta name="author" content="Keutoi" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -217,53 +218,43 @@
 </head>
 <body>
 <div id="content">
+<h1 class="title">ODBC setup and simple examples in linux</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb4da544">1. ODBC setup and simple examples in linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="odbc">odbc</span>&#xa0;<span class="linux">linux</span>&#xa0;<span class="database">database</span></span></a>
+<li><a href="#org1505f26">1. Installation ArchLinux packages</a>
 <ul>
-<li><a href="#org19a4e5f">1.1. Installation ArchLinux packages</a>
-<ul>
-<li><a href="#orgd9b5807">1.1.1. Installing odbc</a></li>
-<li><a href="#org9babd2a">1.1.2. Installing drivers</a></li>
+<li><a href="#org440a323">1.1. Installing odbc</a></li>
+<li><a href="#org245f949">1.2. Installing drivers</a></li>
 </ul>
 </li>
-<li><a href="#org0a0cf2f">1.2. Local ODBC setup</a></li>
-<li><a href="#org191c742">1.3. Testing the installation</a>
+<li><a href="#orgdfe49cd">2. Local ODBC setup</a></li>
+<li><a href="#org320ace6">3. Testing the installation</a>
 <ul>
-<li><a href="#org6d6a043">1.3.1. Postgres</a></li>
-<li><a href="#orge787774">1.3.2. MySQL</a></li>
-<li><a href="#orgcb568b5">1.3.3. <span class="todo TODO">TODO</span> freetds, sqlite testing</a></li>
-<li><a href="#org92ed271">1.3.4. Sample C, C++ Interfaces</a></li>
-<li><a href="#orgffbf780">1.3.5. Reference Links</a></li>
+<li><a href="#org9cb8ed5">3.1. Postgres</a></li>
+<li><a href="#orgd884159">3.2. MySQL</a></li>
+<li><a href="#org09d4dae">3.3. <span class="todo TODO">TODO</span> freetds, sqlite testing</a></li>
 </ul>
 </li>
+<li><a href="#org9e4f9ca">4. Sample Programs</a>
+<ul>
+<li><a href="#orgbb9f015">4.1. Sample C Interfaces</a></li>
+<li><a href="#org12a8566">4.2. Simple Query Example in C++</a></li>
 </ul>
 </li>
+<li><a href="#orgfc91dd0">5. Reference Links</a></li>
 </ul>
 </div>
 </div>
-<p>
-&#x2014;
-layout: post
-title: ODBC Setup in Linux
-date: 2015-08-09
-categories: work
-&#x2014;
-</p>
 
-<div id="outline-container-orgb4da544" class="outline-2">
-<h2 id="orgb4da544"><span class="section-number-2">1</span> ODBC setup and simple examples in linux&#xa0;&#xa0;&#xa0;<span class="tag"><span class="odbc">odbc</span>&#xa0;<span class="linux">linux</span>&#xa0;<span class="database">database</span></span></h2>
+<div id="outline-container-org1505f26" class="outline-2">
+<h2 id="org1505f26"><span class="section-number-2">1</span> Installation ArchLinux packages</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org19a4e5f" class="outline-3">
-<h3 id="org19a4e5f"><span class="section-number-3">1.1</span> Installation ArchLinux packages</h3>
+<div id="outline-container-org440a323" class="outline-3">
+<h3 id="org440a323"><span class="section-number-3">1.1</span> Installing odbc</h3>
 <div class="outline-text-3" id="text-1-1">
-</div>
-<div id="outline-container-orgd9b5807" class="outline-4">
-<h4 id="orgd9b5807"><span class="section-number-4">1.1.1</span> Installing odbc</h4>
-<div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
 <pre class="src src-sh">sudo pacman -S unixodbc
 </pre>
@@ -271,13 +262,13 @@ categories: work
 </div>
 </div>
 
-<div id="outline-container-org9babd2a" class="outline-4">
-<h4 id="org9babd2a"><span class="section-number-4">1.1.2</span> Installing drivers</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-org245f949" class="outline-3">
+<h3 id="org245f949"><span class="section-number-3">1.2</span> Installing drivers</h3>
+<div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-sh">sudo pacman -S myodbc   <span style="color: #75715E;"># </span><span style="color: #75715E;">mysql</span>
-sudo pacman -S psqlodbc <span style="color: #75715E;"># </span><span style="color: #75715E;">postgres</span>
-yaourt -S sqliteodbc    <span style="color: #75715E;"># </span><span style="color: #75715E;">sqlite</span>
+<pre class="src src-sh">sudo pacman -S myodbc   <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">mysql</span>
+sudo pacman -S psqlodbc <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">postgres</span>
+yaourt -S sqliteodbc    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">sqlite</span>
 </pre>
 </div>
 </div>
@@ -285,28 +276,28 @@ yaourt -S sqliteodbc    <span style="color: #75715E;"># </span><span style="colo
 </div>
 
 
-<div id="outline-container-org0a0cf2f" class="outline-3">
-<h3 id="org0a0cf2f"><span class="section-number-3">1.2</span> Local ODBC setup</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgdfe49cd" class="outline-2">
+<h2 id="orgdfe49cd"><span class="section-number-2">2</span> Local ODBC setup</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 Configurations for odbc drivers are written in <span class="underline">/etc/odbcinst.ini</span> file:
 </p>
 <div class="org-src-container">
-<pre class="src src-conf">[<span style="color: #66D9EF;">PostgreSQL</span>]
-<span style="color: #FD971F;">Description</span>     = ODBC driver for postgres
-<span style="color: #FD971F;">Driver</span>          = /usr/lib/psqlodbcw.so
-<span style="color: #FD971F;">FileUsage</span>       = 1
+<pre class="src src-conf">[<span style="color: #6434A3;">PostgreSQL</span>]
+<span style="color: #BA36A5;">Description</span>     = ODBC driver for postgres
+<span style="color: #BA36A5;">Driver</span>          = /usr/lib/psqlodbcw.so
+<span style="color: #BA36A5;">FileUsage</span>       = 1
 
-[<span style="color: #66D9EF;">MySQL</span>]
-<span style="color: #FD971F;">Description</span>     = ODBC driver for mariaDB
-<span style="color: #FD971F;">Driver</span>          = /usr/lib/libmyodbc.so
-<span style="color: #FD971F;">Setup</span>           = /usr/lib/libmyodbc5S.so
-<span style="color: #FD971F;">FileUsage</span>       = 1
+[<span style="color: #6434A3;">MySQL</span>]
+<span style="color: #BA36A5;">Description</span>     = ODBC driver for mariaDB
+<span style="color: #BA36A5;">Driver</span>          = /usr/lib/libmyodbc.so
+<span style="color: #BA36A5;">Setup</span>           = /usr/lib/libmyodbc5S.so
+<span style="color: #BA36A5;">FileUsage</span>       = 1
 
-[<span style="color: #66D9EF;">FreeTDS</span>]
-<span style="color: #FD971F;">Description</span>     = ODBC driver for Microsoft SQL
-<span style="color: #FD971F;">Driver</span>          = /usr/lib/libtdsodbc.so
-<span style="color: #FD971F;">UsageCount</span>      = 1
+[<span style="color: #6434A3;">FreeTDS</span>]
+<span style="color: #BA36A5;">Description</span>     = ODBC driver for Microsoft SQL
+<span style="color: #BA36A5;">Driver</span>          = /usr/lib/libtdsodbc.so
+<span style="color: #BA36A5;">UsageCount</span>      = 1
 </pre>
 </div>
 
@@ -315,52 +306,52 @@ Configuration for odbc sources are in <span class="underline">/etc/odbc.ini</spa
 </p>
 
 <div class="org-src-container">
-<pre class="src src-conf">[<span style="color: #66D9EF;">mariadb-connector</span>]
-<span style="color: #FD971F;">Description</span>     = connection to mariadb version of mysql
-<span style="color: #FD971F;">Driver</span>          = MySQL
-<span style="color: #FD971F;">Database</span>        = test
-<span style="color: #FD971F;">Server</span>          = 127.0.0.1
-<span style="color: #FD971F;">UserName</span>        = keutoi
-<span style="color: #FD971F;">Trace</span>           = No
-<span style="color: #FD971F;">Port</span>            = 3306
+<pre class="src src-conf">[<span style="color: #6434A3;">mariadb-connector</span>]
+<span style="color: #BA36A5;">Description</span>     = connection to mariadb version of mysql
+<span style="color: #BA36A5;">Driver</span>          = MySQL
+<span style="color: #BA36A5;">Database</span>        = test
+<span style="color: #BA36A5;">Server</span>          = 127.0.0.1
+<span style="color: #BA36A5;">UserName</span>        = keutoi
+<span style="color: #BA36A5;">Trace</span>           = No
+<span style="color: #BA36A5;">Port</span>            = 3306
 
-[<span style="color: #66D9EF;">psql-connector</span>]
-<span style="color: #FD971F;">Description</span>     = connection to postgres
-<span style="color: #FD971F;">Driver</span>          = PostgreSQL
-<span style="color: #FD971F;">Database</span>        = test
-<span style="color: #FD971F;">Server</span>          = 127.0.0.1
-<span style="color: #FD971F;">Port</span>            = 5432
-<span style="color: #FD971F;">UserName</span>        = keutoi
-<span style="color: #FD971F;">Trace</span>           = No
+[<span style="color: #6434A3;">psql-connector</span>]
+<span style="color: #BA36A5;">Description</span>     = connection to postgres
+<span style="color: #BA36A5;">Driver</span>          = PostgreSQL
+<span style="color: #BA36A5;">Database</span>        = test
+<span style="color: #BA36A5;">Server</span>          = 127.0.0.1
+<span style="color: #BA36A5;">Port</span>            = 5432
+<span style="color: #BA36A5;">UserName</span>        = keutoi
+<span style="color: #BA36A5;">Trace</span>           = No
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org191c742" class="outline-3">
-<h3 id="org191c742"><span class="section-number-3">1.3</span> Testing the installation</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org320ace6" class="outline-2">
+<h2 id="org320ace6"><span class="section-number-2">3</span> Testing the installation</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 <code>isql</code> is a CLI for <code>unixodbc</code>.
 </p>
 </div>
 
-<div id="outline-container-org6d6a043" class="outline-4">
-<h4 id="org6d6a043"><span class="section-number-4">1.3.1</span> Postgres</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org9cb8ed5" class="outline-3">
+<h3 id="org9cb8ed5"><span class="section-number-3">3.1</span> Postgres</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 <code>isql -v psql-connector</code> connects using psql-connector source specification in <code>/etc/odbc.ini</code> or in local <code>~/.odbc.ini</code> (I'm not
 sure of overrides) and opens a sql like prompt to execute sql commands.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"select * from mytable"</span> |isql -v psql-connector
+<pre class="src src-sh"><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"select * from mytable"</span> |isql -v psql-connector
 </pre>
 </div>
 <p>
 gives output:
 </p>
-<pre class="example" id="org166b5f5">
+<pre class="example" id="org555c576">
 +---------------------------------------+
 | Connected!                            |
 |                                       |
@@ -384,179 +375,181 @@ SQL&gt;
 </div>
 </div>
 
-<div id="outline-container-orge787774" class="outline-4">
-<h4 id="orge787774"><span class="section-number-4">1.3.2</span> MySQL</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-orgd884159" class="outline-3">
+<h3 id="orgd884159"><span class="section-number-3">3.2</span> MySQL</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 myodbc driver was not working in my system. <a href="http://www.howtobuildsoftware.com/index.php/how-do/bkD6/mysql-odbc-asterisk-mariadb-isql-mariadb-odbc-throws-invalid-pointer-error">some segmentation errors in driver lib</a>. 
 I had to downgrade myodbc pkg from 5.3.4-1 to 5.2.6-1 to get it working
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"select * from mytable"</span> | isql -v mariadb-connector
+<pre class="src src-sh"><span style="color: #006FE0;">echo</span> <span style="color: #008000;">"select * from mytable"</span> | isql -v mariadb-connector
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgcb568b5" class="outline-4">
-<h4 id="orgcb568b5"><span class="section-number-4">1.3.3</span> <span class="todo TODO">TODO</span> freetds, sqlite testing</h4>
+<div id="outline-container-org09d4dae" class="outline-3">
+<h3 id="org09d4dae"><span class="section-number-3">3.3</span> <span class="todo TODO">TODO</span> freetds, sqlite testing</h3>
+</div>
 </div>
 
 
-<div id="outline-container-org92ed271" class="outline-4">
-<h4 id="org92ed271"><span class="section-number-4">1.3.4</span> Sample C, C++ Interfaces</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-org9e4f9ca" class="outline-2">
+<h2 id="org9e4f9ca"><span class="section-number-2">4</span> Sample Programs</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgbb9f015" class="outline-3">
+<h3 id="orgbb9f015"><span class="section-number-3">4.1</span> Sample C Interfaces</h3>
+<div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
-<pre class="src src-c"><span style="color: #F92672;">#include</span> <span style="color: #E6DB74;">&lt;stdio.h&gt;</span>
-<span style="color: #F92672;">#include</span> <span style="color: #E6DB74;">&lt;sql.h&gt;</span>
-<span style="color: #F92672;">#include</span> <span style="color: #E6DB74;">&lt;sqlext.h&gt;</span>
+<pre class="src src-c"><span style="color: #808080;">#include</span> <span style="color: #008000;">&lt;stdio.h&gt;</span>
+<span style="color: #808080;">#include</span> <span style="color: #008000;">&lt;sql.h&gt;</span>
+<span style="color: #808080;">#include</span> <span style="color: #008000;">&lt;sqlext.h&gt;</span>
 
-<span style="color: #66D9EF;">int</span> <span style="color: #A6E22E;">main</span>() {
-    <span style="color: #66D9EF;">SQLHENV</span> <span style="color: #FD971F;">env</span>;
-    <span style="color: #66D9EF;">SQLCHAR</span> <span style="color: #FD971F;">driver</span>[256];
-    <span style="color: #66D9EF;">SQLCHAR</span> <span style="color: #FD971F;">attr</span>[256];
-    <span style="color: #66D9EF;">SQLSMALLINT</span> <span style="color: #FD971F;">driver_ret</span>;
-    <span style="color: #66D9EF;">SQLSMALLINT</span> <span style="color: #FD971F;">attr_ret</span>;
-    <span style="color: #66D9EF;">SQLUSMALLINT</span> <span style="color: #FD971F;">direction</span>;
-    <span style="color: #66D9EF;">SQLRETURN</span> <span style="color: #FD971F;">ret</span>;
+<span style="color: #6434A3;">int</span> <span style="color: #006699;">main</span>() {
+    <span style="color: #6434A3;">SQLHENV</span> <span style="color: #BA36A5;">env</span>;
+    <span style="color: #6434A3;">SQLCHAR</span> <span style="color: #BA36A5;">driver</span>[256];
+    <span style="color: #6434A3;">SQLCHAR</span> <span style="color: #BA36A5;">attr</span>[256];
+    <span style="color: #6434A3;">SQLSMALLINT</span> <span style="color: #BA36A5;">driver_ret</span>;
+    <span style="color: #6434A3;">SQLSMALLINT</span> <span style="color: #BA36A5;">attr_ret</span>;
+    <span style="color: #6434A3;">SQLUSMALLINT</span> <span style="color: #BA36A5;">direction</span>;
+    <span style="color: #6434A3;">SQLRETURN</span> <span style="color: #BA36A5;">ret</span>;
 
-    <span style="color: #75715E;">/*</span>
-<span style="color: #75715E;">     *  Initializing lib vars</span>
-<span style="color: #75715E;">     */</span>
+    <span style="color: #8D8D84;">/*</span>
+<span style="color: #8D8D84; font-style: italic;">     *  Initializing lib vars</span>
+<span style="color: #8D8D84;">     */</span>
     SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &amp;env);
-    SQLSetEnvAttr(env, SQL_ATTR_ODBC_VERSION, (<span style="color: #66D9EF;">void</span> *) SQL_OV_ODBC3, 0);
+    SQLSetEnvAttr(env, SQL_ATTR_ODBC_VERSION, (<span style="color: #6434A3;">void</span> *) SQL_OV_ODBC3, 0);
 
     direction = SQL_FETCH_FIRST;
-    <span style="color: #75715E;">/*</span>
-<span style="color: #75715E;">     *  Get the list of available drivers.</span>
-<span style="color: #75715E;">     *  This is equivalent to odbcinst -q -d</span>
-<span style="color: #75715E;">     */</span>
-    <span style="color: #F92672;">while</span>(SQL_SUCCEEDED(ret = SQLDrivers(env, direction, driver, <span style="color: #F92672;">sizeof</span>(driver), &amp;driver_ret,  attr, <span style="color: #F92672;">sizeof</span>(attr), &amp;attr_ret)))
+    <span style="color: #8D8D84;">/*</span>
+<span style="color: #8D8D84; font-style: italic;">     *  Get the list of available drivers.</span>
+<span style="color: #8D8D84; font-style: italic;">     *  This is equivalent to odbcinst -q -d</span>
+<span style="color: #8D8D84;">     */</span>
+    <span style="color: #0000FF;">while</span>(SQL_SUCCEEDED(ret = SQLDrivers(env, direction, driver, <span style="color: #0000FF;">sizeof</span>(driver), &amp;driver_ret,  attr, <span style="color: #0000FF;">sizeof</span>(attr), &amp;attr_ret)))
     {
         direction = SQL_FETCH_NEXT;
-        printf(<span style="color: #E6DB74;">"%s - %s\n"</span>, driver, attr);
-        <span style="color: #F92672;">if</span> (ret == SQL_SUCCESS_WITH_INFO) printf(<span style="color: #E6DB74;">"\tdata truncation\n"</span>);
+        printf(<span style="color: #008000;">"%s - %s\n"</span>, driver, attr);
+        <span style="color: #0000FF;">if</span> (ret == SQL_SUCCESS_WITH_INFO) printf(<span style="color: #008000;">"\tdata truncation\n"</span>);
     }
 
-    <span style="color: #66D9EF;">SQLCHAR</span> <span style="color: #FD971F;">dsn</span>[256];
-    <span style="color: #66D9EF;">SQLCHAR</span> <span style="color: #FD971F;">desc</span>[256];
-    <span style="color: #66D9EF;">SQLSMALLINT</span> <span style="color: #FD971F;">dsn_ret</span>;
-    <span style="color: #66D9EF;">SQLSMALLINT</span> <span style="color: #FD971F;">desc_ret</span>;
+    <span style="color: #6434A3;">SQLCHAR</span> <span style="color: #BA36A5;">dsn</span>[256];
+    <span style="color: #6434A3;">SQLCHAR</span> <span style="color: #BA36A5;">desc</span>[256];
+    <span style="color: #6434A3;">SQLSMALLINT</span> <span style="color: #BA36A5;">dsn_ret</span>;
+    <span style="color: #6434A3;">SQLSMALLINT</span> <span style="color: #BA36A5;">desc_ret</span>;
 
 
-    <span style="color: #75715E;">/*</span>
-<span style="color: #75715E;">     * Get the list of available data sources.</span>
-<span style="color: #75715E;">     * This is equivalent to odbcinst -q -s</span>
-<span style="color: #75715E;">     */</span>
-    <span style="color: #F92672;">while</span>(SQL_SUCCEEDED(ret = SQLDataSources(env, direction, dsn, <span style="color: #F92672;">sizeof</span>(dsn), &amp;dsn_ret, desc, <span style="color: #F92672;">sizeof</span>(desc), &amp;desc_ret)))
+    <span style="color: #8D8D84;">/*</span>
+<span style="color: #8D8D84; font-style: italic;">     * Get the list of available data sources.</span>
+<span style="color: #8D8D84; font-style: italic;">     * This is equivalent to odbcinst -q -s</span>
+<span style="color: #8D8D84;">     */</span>
+    <span style="color: #0000FF;">while</span>(SQL_SUCCEEDED(ret = SQLDataSources(env, direction, dsn, <span style="color: #0000FF;">sizeof</span>(dsn), &amp;dsn_ret, desc, <span style="color: #0000FF;">sizeof</span>(desc), &amp;desc_ret)))
     {
         direction = SQL_FETCH_NEXT;
-        printf(<span style="color: #E6DB74;">"%s - %s\n"</span>, dsn, desc);
-        <span style="color: #F92672;">if</span> (ret == SQL_SUCCESS_WITH_INFO) printf(<span style="color: #E6DB74;">"\tdata truncation\n"</span>);
+        printf(<span style="color: #008000;">"%s - %s\n"</span>, dsn, desc);
+        <span style="color: #0000FF;">if</span> (ret == SQL_SUCCESS_WITH_INFO) printf(<span style="color: #008000;">"\tdata truncation\n"</span>);
     }
-    <span style="color: #F92672;">return</span> 0;
+    <span style="color: #0000FF;">return</span> 0;
 }
 </pre>
 </div>
+</div>
+</div>
 
-<p>
-```
-</p>
-
-<p>
-Simple Query Example
-</p>
-
+<div id="outline-container-org12a8566" class="outline-3">
+<h3 id="org12a8566"><span class="section-number-3">4.2</span> Simple Query Example in C++</h3>
+<div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #F92672;">#include</span><span style="color: #E6DB74;">&lt;stdio.h&gt;</span>
-<span style="color: #F92672;">#include</span><span style="color: #E6DB74;">&lt;sql.h&gt;</span>
-<span style="color: #F92672;">#include</span><span style="color: #E6DB74;">&lt;sqlext.h&gt;</span>
-<span style="color: #F92672;">#include</span><span style="color: #E6DB74;">&lt;exception&gt;</span>
-<span style="color: #F92672;">#include</span><span style="color: #E6DB74;">&lt;iostream&gt;</span>
+<pre class="src src-cpp"><span style="color: #808080;">#include</span><span style="color: #008000;">&lt;stdio.h&gt;</span>
+<span style="color: #808080;">#include</span><span style="color: #008000;">&lt;sql.h&gt;</span>
+<span style="color: #808080;">#include</span><span style="color: #008000;">&lt;sqlext.h&gt;</span>
+<span style="color: #808080;">#include</span><span style="color: #008000;">&lt;exception&gt;</span>
+<span style="color: #808080;">#include</span><span style="color: #008000;">&lt;iostream&gt;</span>
 
-<span style="color: #F92672;">#define</span> <span style="color: #FD971F;">NAME_LEN</span> 50
-<span style="color: #F92672;">#define</span> <span style="color: #FD971F;">ID_LEN</span> 20
+<span style="color: #808080;">#define</span> <span style="color: #BA36A5;">NAME_LEN</span> 50
+<span style="color: #808080;">#define</span> <span style="color: #BA36A5;">ID_LEN</span> 20
 
-<span style="color: #66D9EF;">void</span> <span style="color: #A6E22E;">show_error</span>() {
-    printf(<span style="color: #E6DB74;">"SQL fetch Error"</span>);
+<span style="color: #6434A3;">void</span> <span style="color: #006699;">show_error</span>() {
+    printf(<span style="color: #008000;">"SQL fetch Error"</span>);
 }
-<span style="color: #E6DB74;">/**</span>
-<span style="color: #E6DB74;"> * </span><span style="color: #AE81FF;">@brief</span><span style="color: #E6DB74;"> error handling for SQL* functions</span>
-<span style="color: #E6DB74;"> */</span>
-<span style="color: #66D9EF;">void</span> <span style="color: #A6E22E;">check_error</span>(<span style="color: #66D9EF;">SQLRETURN</span> <span style="color: #FD971F;">ret_val</span>, <span style="color: #AE81FF;">std</span>::<span style="color: #66D9EF;">string</span> <span style="color: #FD971F;">act_str</span>)
+<span style="color: #036A07;">/**</span>
+<span style="color: #036A07;"> * </span><span style="color: #D0372D;">@brief</span><span style="color: #036A07;"> error handling for SQL* functions</span>
+<span style="color: #036A07;"> */</span>
+<span style="color: #6434A3;">void</span> <span style="color: #006699;">check_error</span>(<span style="color: #6434A3;">SQLRETURN</span> <span style="color: #BA36A5;">ret_val</span>, <span style="color: #D0372D;">std</span>::<span style="color: #6434A3;">string</span> <span style="color: #BA36A5;">act_str</span>)
 {
-    <span style="color: #F92672;">switch</span> (ret_val)
+    <span style="color: #0000FF;">switch</span> (ret_val)
     {
-        <span style="color: #F92672;">case</span> SQL_SUCCESS:
-        <span style="color: #F92672;">case</span> SQL_SUCCESS_WITH_INFO:
-            <span style="color: #F92672;">break</span>;
-        <span style="color: #F92672;">case</span> SQL_NO_DATA:
-            <span style="color: #AE81FF;">std</span>::cerr &lt;&lt; <span style="color: #E6DB74;">"end of data\n"</span>;
-            <span style="color: #F92672;">break</span>;
-        <span style="color: #F92672;">default</span>:
-            <span style="color: #F92672;">throw</span> <span style="color: #AE81FF;">std</span>::runtime_error(act_str);
+        <span style="color: #0000FF;">case</span> SQL_SUCCESS:
+        <span style="color: #0000FF;">case</span> SQL_SUCCESS_WITH_INFO:
+            <span style="color: #0000FF;">break</span>;
+        <span style="color: #0000FF;">case</span> SQL_NO_DATA:
+            <span style="color: #D0372D;">std</span>::cerr &lt;&lt; <span style="color: #008000;">"end of data\n"</span>;
+            <span style="color: #0000FF;">break</span>;
+        <span style="color: #0000FF;">default</span>:
+            <span style="color: #0000FF;">throw</span> <span style="color: #D0372D;">std</span>::runtime_error(act_str);
     }
 }
 
-<span style="color: #66D9EF;">int</span> <span style="color: #A6E22E;">main</span>() {
-    <span style="color: #66D9EF;">SQLHENV</span> <span style="color: #FD971F;">henv</span>;
-    <span style="color: #66D9EF;">SQLHDBC</span> <span style="color: #FD971F;">hdbc</span>;
-    <span style="color: #66D9EF;">SQLHSTMT</span> <span style="color: #FD971F;">hstmt</span> = 0;
-    <span style="color: #66D9EF;">SQLRETURN</span> <span style="color: #FD971F;">retcode</span>;
-    <span style="color: #66D9EF;">SQLCHAR</span> <span style="color: #FD971F;">outstr</span>[1024];
-    <span style="color: #66D9EF;">SQLSMALLINT</span> <span style="color: #FD971F;">outstrlen</span>;
+<span style="color: #6434A3;">int</span> <span style="color: #006699;">main</span>() {
+    <span style="color: #6434A3;">SQLHENV</span> <span style="color: #BA36A5;">henv</span>;
+    <span style="color: #6434A3;">SQLHDBC</span> <span style="color: #BA36A5;">hdbc</span>;
+    <span style="color: #6434A3;">SQLHSTMT</span> <span style="color: #BA36A5;">hstmt</span> = 0;
+    <span style="color: #6434A3;">SQLRETURN</span> <span style="color: #BA36A5;">retcode</span>;
+    <span style="color: #6434A3;">SQLCHAR</span> <span style="color: #BA36A5;">outstr</span>[1024];
+    <span style="color: #6434A3;">SQLSMALLINT</span> <span style="color: #BA36A5;">outstrlen</span>;
 
-    <span style="color: #66D9EF;">SQLCHAR</span> <span style="color: #FD971F;">szName</span>[NAME_LEN], <span style="color: #FD971F;">szID</span>[ID_LEN];
-    <span style="color: #66D9EF;">SQLLEN</span> <span style="color: #FD971F;">cbName</span> = 0, <span style="color: #FD971F;">cbID</span> = 0;
+    <span style="color: #6434A3;">SQLCHAR</span> <span style="color: #BA36A5;">szName</span>[NAME_LEN], <span style="color: #BA36A5;">szID</span>[ID_LEN];
+    <span style="color: #6434A3;">SQLLEN</span> <span style="color: #BA36A5;">cbName</span> = 0, <span style="color: #BA36A5;">cbID</span> = 0;
 
-    <span style="color: #F92672;">try</span> {
-        <span style="color: #75715E;">//</span><span style="color: #75715E;">Allocate environment handle</span>
+    <span style="color: #0000FF;">try</span> {
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">Allocate environment handle</span>
         retcode = SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &amp;henv);
-        check_error(retcode, <span style="color: #E6DB74;">"Allocate Environment Handle"</span>);
-        <span style="color: #75715E;">//</span><span style="color: #75715E;">Set the ODBC version environment attribute</span>
-        retcode = SQLSetEnvAttr(henv, SQL_ATTR_ODBC_VERSION, (<span style="color: #66D9EF;">SQLPOINTER</span>*)SQL_OV_ODBC3, 0);
-        check_error(retcode, <span style="color: #E6DB74;">"Set ODBC version enviroment attribute"</span>);
-        <span style="color: #75715E;">//</span><span style="color: #75715E;">Allocate connection handle</span>
+        check_error(retcode, <span style="color: #008000;">"Allocate Environment Handle"</span>);
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">Set the ODBC version environment attribute</span>
+        retcode = SQLSetEnvAttr(henv, SQL_ATTR_ODBC_VERSION, (<span style="color: #6434A3;">SQLPOINTER</span>*)SQL_OV_ODBC3, 0);
+        check_error(retcode, <span style="color: #008000;">"Set ODBC version enviroment attribute"</span>);
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">Allocate connection handle</span>
         retcode = SQLAllocHandle(SQL_HANDLE_DBC, henv, &amp;hdbc);
-        check_error(retcode, <span style="color: #E6DB74;">"Allocate connection Handle"</span>);
-        <span style="color: #75715E;">//</span><span style="color: #75715E;">Set login timeout to 5 seconds</span>
-        SQLSetConnectAttr(hdbc, SQL_LOGIN_TIMEOUT, (<span style="color: #66D9EF;">SQLPOINTER</span>)5, 0);
-        check_error(retcode, <span style="color: #E6DB74;">"set login timeout attribute"</span>);
+        check_error(retcode, <span style="color: #008000;">"Allocate connection Handle"</span>);
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">Set login timeout to 5 seconds</span>
+        SQLSetConnectAttr(hdbc, SQL_LOGIN_TIMEOUT, (<span style="color: #6434A3;">SQLPOINTER</span>)5, 0);
+        check_error(retcode, <span style="color: #008000;">"set login timeout attribute"</span>);
 
-        <span style="color: #E6DB74;">/**</span>
-<span style="color: #E6DB74;">         * Connect to data source</span>
-<span style="color: #E6DB74;">         */</span>
-        retcode = SQLDriverConnect(hdbc, <span style="color: #AE81FF;">NULL</span>, (<span style="color: #66D9EF;">SQLCHAR</span>*)<span style="color: #E6DB74;">"DSN=mariadb-connector;"</span>, SQL_NTS, outstr, <span style="color: #F92672;">sizeof</span>(outstr), &amp;outstrlen, SQL_DRIVER_COMPLETE);
-        check_error(retcode, <span style="color: #E6DB74;">"connect to the data source"</span>);
+        <span style="color: #036A07;">/**</span>
+<span style="color: #036A07;">         * Connect to data source</span>
+<span style="color: #036A07;">         */</span>
+        retcode = SQLDriverConnect(hdbc, <span style="color: #D0372D;">NULL</span>, (<span style="color: #6434A3;">SQLCHAR</span>*)<span style="color: #008000;">"DSN=mariadb-connector;"</span>, SQL_NTS, outstr, <span style="color: #0000FF;">sizeof</span>(outstr), &amp;outstrlen, SQL_DRIVER_COMPLETE);
+        check_error(retcode, <span style="color: #008000;">"connect to the data source"</span>);
 
-        <span style="color: #75715E;">//</span><span style="color: #75715E;">Allocate statement handle</span>
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">Allocate statement handle</span>
         retcode = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &amp;hstmt);
-        check_error(retcode, <span style="color: #E6DB74;">"allocate a statement handle"</span>);
+        check_error(retcode, <span style="color: #008000;">"allocate a statement handle"</span>);
 
-        <span style="color: #E6DB74;">/**</span>
-<span style="color: #E6DB74;">         * statement to be executed.</span>
-<span style="color: #E6DB74;">         */</span>
-        retcode = SQLExecDirect (hstmt, (<span style="color: #66D9EF;">SQLCHAR</span> *) <span style="color: #E6DB74;">"select * from mytable"</span>, SQL_NTS);
-        check_error(retcode, <span style="color: #E6DB74;">"execute the statement"</span>);
+        <span style="color: #036A07;">/**</span>
+<span style="color: #036A07;">         * statement to be executed.</span>
+<span style="color: #036A07;">         */</span>
+        retcode = SQLExecDirect (hstmt, (<span style="color: #6434A3;">SQLCHAR</span> *) <span style="color: #008000;">"select * from mytable"</span>, SQL_NTS);
+        check_error(retcode, <span style="color: #008000;">"execute the statement"</span>);
 
-        <span style="color: #E6DB74;">/**</span>
-<span style="color: #E6DB74;">         * Bind a column to a variable</span>
-<span style="color: #E6DB74;">         */</span>
+        <span style="color: #036A07;">/**</span>
+<span style="color: #036A07;">         * Bind a column to a variable</span>
+<span style="color: #036A07;">         */</span>
         retcode = SQLBindCol(hstmt, 1, SQL_C_CHAR, szName, NAME_LEN, &amp;cbName);
-        check_error(retcode, <span style="color: #E6DB74;">"bind 1 column to the statement"</span>);
+        check_error(retcode, <span style="color: #008000;">"bind 1 column to the statement"</span>);
         retcode = SQLBindCol(hstmt, 2, SQL_C_CHAR, szID, ID_LEN, &amp;cbID);
-        check_error(retcode, <span style="color: #E6DB74;">"bind 2 column to the statement"</span>);
+        check_error(retcode, <span style="color: #008000;">"bind 2 column to the statement"</span>);
 
-        <span style="color: #E6DB74;">/**</span>
-<span style="color: #E6DB74;">         * fetch sql hstmt untill there is no data and print</span>
-<span style="color: #E6DB74;">         */</span>
-        <span style="color: #F92672;">for</span> (<span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">i</span>=0 ; ; i++)
+        <span style="color: #036A07;">/**</span>
+<span style="color: #036A07;">         * fetch sql hstmt untill there is no data and print</span>
+<span style="color: #036A07;">         */</span>
+        <span style="color: #0000FF;">for</span> (<span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">i</span>=0 ; ; i++)
         {
             retcode = SQLFetch(hstmt);
-            <span style="color: #F92672;">if</span>(retcode == SQL_NO_DATA)<span style="color: #F92672;">break</span>;
-            <span style="color: #F92672;">else</span> printf( <span style="color: #E6DB74;">"%d: %s %s %s\n"</span>, i + 1, szID, szName);
+            <span style="color: #0000FF;">if</span>(retcode == SQL_NO_DATA)<span style="color: #0000FF;">break</span>;
+            <span style="color: #0000FF;">else</span> printf( <span style="color: #008000;">"%d: %s %s %s\n"</span>, i + 1, szID, szName);
         }
 
         SQLCancel(hstmt);
@@ -566,34 +559,33 @@ Simple Query Example
         SQLFreeHandle(SQL_HANDLE_DBC, hdbc);
         SQLFreeHandle(SQL_HANDLE_ENV, henv);
     }
-    <span style="color: #F92672;">catch</span>(<span style="color: #AE81FF;">std</span>::<span style="color: #66D9EF;">exception</span> &amp;<span style="color: #FD971F;">e</span>)
+    <span style="color: #0000FF;">catch</span>(<span style="color: #D0372D;">std</span>::<span style="color: #6434A3;">exception</span> &amp;<span style="color: #BA36A5;">e</span>)
     {
-        <span style="color: #AE81FF;">std</span>::cerr &lt;&lt; e.what() &lt;&lt; <span style="color: #AE81FF;">std</span>::endl;
-        <span style="color: #F92672;">return</span> 1;
+        <span style="color: #D0372D;">std</span>::cerr &lt;&lt; e.what() &lt;&lt; <span style="color: #D0372D;">std</span>::endl;
+        <span style="color: #0000FF;">return</span> 1;
     }
-    <span style="color: #F92672;">return</span> 0;
+    <span style="color: #0000FF;">return</span> 0;
 }
 </pre>
 </div>
 </div>
 </div>
+</div>
 
 
-<div id="outline-container-orgffbf780" class="outline-4">
-<h4 id="orgffbf780"><span class="section-number-4">1.3.5</span> Reference Links</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-orgfc91dd0" class="outline-2">
+<h2 id="orgfc91dd0"><span class="section-number-2">5</span> Reference Links</h2>
+<div class="outline-text-2" id="text-5">
 <p>
-[siva]: <a href="https://compscinotes.wordpress.com/2010/04/18/unixodbc-mysql-sample-program/">https://compscinotes.wordpress.com/2010/04/18/unixodbc-mysql-sample-program/</a>
-[easysoft]: <a href="http://www.easysoft.com/developer/languages/c/odbc_tutorial.html">http://www.easysoft.com/developer/languages/c/odbc_tutorial.html</a>
-[raosoft]: <a href="http://www.raosoft.com/ezsurvey/help/2007/odbc_in_unix.html">http://www.raosoft.com/ezsurvey/help/2007/odbc_in_unix.html</a>
+<a href="https://compscinotes.wordpress.com/2010/04/18/unixodbc-mysql-sample-program/">siva</a>  <a href="http://www.easysoft.com/developer/languages/c/odbc_tutorial.html">easysoft</a>  <a href="http://www.raosoft.com/ezsurvey/help/2007/odbc_in_unix.html">raosoft</a>
 </p>
 </div>
 </div>
 </div>
-</div>
-</div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-09-10 Fri 12:53</p>
+<p class="date">Date: 2015-08-09 Sun 00:00</p>
+<p class="author">Author: Keutoi</p>
+<p class="date">Created: 2021-09-12 Sun 10:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
